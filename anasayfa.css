@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* Arkadaki o koyu, simsiyah zemin */
+    background-color: #070102; 
+}
+
+/* Ekranın ortasında, yukarısıyla ve aşağısıyla birleşmeyen, havada asılı duran kırmızı kutu */
+#about_me {
+    background-color: #D72323; /* Senin kırmızı rengin */
+    border: solid 6px #1b1616; /* İlk kodundaki o koyu çerçeve */
+    
+    /* Genişlik Ayarları (Telefon uyumlu ve şerit gibi) */
+    width: 92%;           /* Telefon ekranının %90'ını kaplasın, sağdan soldan boşluk kalsın */
+    max-width: 480px;     /* Bilgisayardan açılsa bile genişlemesin, telefon boyutunda kalsın */
+    
+    /* Yükseklik Ayarı */
+    height: 1800px;       /* Senin ilk kodundaki o uzun orijinal yüksekliği koruyoruz */
+    
+    /* İŞTE SİHİRLİ KURAL: Havada asılı bırakma ve ortalama */
+    margin: 25px auto;    /* Üstten 40px, alttan 40px boşluk bırakır (ekrana yapışmaz). 'auto' ise sağ/sol boşluğu eşitler. */
+    
+    /* İçerideki elemanlar kenarlara çok yapışmasın diye iç boşluk */
+    padding: 10px;
+    box-sizing: border-box; 
+}
