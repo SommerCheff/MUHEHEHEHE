@@ -184,3 +184,33 @@ window.addEventListener('resize', () => {
         canvas.height = window.innerHeight;
     }
 });
+
+
+// 🐕 SPAM ENGELLEMELİ PIBBLLE MOTORU (Satır 191 ve sonrasına bunu yapıştır bradar)
+const pibbleImg = document.getElementById("pibbleImg");
+const osurukSes = document.getElementById("osurukses"); // Küçük harfli ID ile eşitlendi!
+let isOsuruyor = false; // İşte o muazzam emniyet kilidi amınake!
+
+if (pibbleImg && osurukSes) {
+    pibbleImg.addEventListener("click", function() {
+        if (isOsuruyor) return; // Eğer hayvan zaten osuruyorsa yeni tıklamayı engelle!
+        
+        isOsuruyor = true;
+        pibbleImg.classList.add("pibble-crazy-mode");
+        
+        pibbleImg.currentTime = 0;
+        pibbleImg.play().catch(e => console.log("Video oynatılamadı:", e));
+        
+        // Tam dumanın çıktığı 1. saniyede (1000ms) ses devreye girer
+        setTimeout(function() {
+            osurukSes.currentTime = 0;
+            osurukSes.play().catch(e => console.log("Ses oynatılamadı:", e));
+        }, 1000); 
+
+        // Ses bittiği an her şeyi sıfırla ve kilidi aç amınake
+        osurukSes.onended = function() {
+            pibbleImg.classList.remove("pibble-crazy-mode");
+            isOsuruyor = false; 
+        };
+    });
+}

@@ -66,9 +66,9 @@ body::after {
     width: 140%;
     height: 140%;
     z-index: -1;
-    background: radial-gradient(circle at 35% 35%, rgba(0, 255, 136, 0.28) 0%, transparent 55%),
-                radial-gradient(circle at 65% 55%, rgba(0, 200, 255, 0.18) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(10, 255, 100, 0.12) 0%, transparent 65%);
+    background: radial-gradient(circle at 35% 35%, rgba(169, 18, 133, 0.28) 0%, transparent 55%),
+                radial-gradient(circle at 65% 55%, rgba(197, 41, 171, 0.18) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(255, 15, 183, 0.12) 0%, transparent 65%);
     filter: blur(50px);
     animation: auroraDance 10s ease-in-out infinite alternate;
     pointer-events: none;
@@ -82,7 +82,7 @@ body::after {
 /* TAM HAYALİNDEKİ O GENİŞ VE BÜYÜK KIRMIZI PANO */
 #about_me {
     color: #F5EDED;
-    background-color: #D72323;
+    background-color: #db6aae;
     border: solid 6px #1b1616;
     /* Sabit devasa yükseklik yerine esnek yükseklik verdik, içine çok şey ekleyeceksen bu şart bradar */
     width: 1000px; 
@@ -335,5 +335,316 @@ input[type="range"]::-webkit-slider-thumb {
         font-size: 2.4rem;
         margin-bottom: 25px;
         text-shadow: none !important; /* Mobilde de gölgesiz, dümdüz ve doğal */
+    }
+}
+
+/* Giriş perdesinin (#black-curtain) içindeki tüm resimleri hedefler */
+#black-curtain img {
+    width: 420px; /* Eski küçük halinden kurtarıp genişliği 320px yaptık! */
+    height: auto; /* Oran bozulmasın, fotoğraf yamulup çirkinleşmesin amınake */
+    max-width: 85%; /* Bilgisayarda büyük dursun ama telefonda ekrandan taşmasın diye sınır koyduk */
+    
+    /* Fotoğrafın etrafına uzay temasına uygun çok hafif, tatlı bir parlama efekti */
+    border-radius: 10px; /* Köşelerini hafifçe yumuşattık, premium dursun */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); 
+    
+    /* Tıklanabilir olduğunu belli etmek için fareyle üzerine gelince el işareti çıksın */
+    cursor: pointer; 
+    
+    /* JavaScript ile tıkladığında o titreme efektleri (shake) falan kopmasın diye geçişi yumuşatır */
+    transition: transform 0.2s ease-in-out; 
+}
+
+/* 🎯 HİLE: Fareyle fotoğrafın üzerine gelince hafifçe büyüsün (Eslem'e tıkla mesajı verir) */
+#black-curtain img:hover {
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   📱 MOBİL GİRİŞ EKRANI AYARI
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    #black-curtain img {
+        width: 220px; /* Telefon ekranları dar olduğu için mobilde boyutu 220px'e sabitledik */
+    }
+}
+
+/* ==========================================================================
+   👾 UZAYLI GIFLERİ VE BAŞLIK FLEX HİZALAMA MOTORU
+   ========================================================================== */
+
+/* Başlığı ve iki gifi yan yana getiren ana kapsayıcı */
+.title-gif-container {
+    display: flex;
+    justify-content: space-between; /* Soldaki sola, sağdaki sağa, başlık ortaya */
+    align-items: center; /* Dikeyde hepsini aynı hizada eşitler */
+    width: 95%; /* Panonun kenarlarına çok yapışmasınlar diye %95 yaptık */
+    margin: 15px auto 35px auto; /* Panonun üstünden ve altından boşluk */
+    gap: 15px; /* Elemanların arasına küçük bir güvenlik mesafesi */
+}
+
+/* 🎯 GIFLERİ BÜYÜTME OPERASYONU amınake */
+.birthday-gif {
+    width: 200px;  /* Eski küçük halinden kurtarıp genişliği 200px yaptık (İstediğin gibi arttır pampa) */
+    height: auto;  /* Oran bozulmasın, gif yamulmasın diye otomatik boy */
+    object-fit: contain;
+}
+
+/* Sağdaki gifi istersen sola baksın diye ters çevirebiliriz (Ayna efekti) */
+.alien-right {
+    transform: scaleX(-1); /* Eğer sağdaki de sola baksın istersen bu satırı SİL pampa, şu an birbirlerine bakıyorlar */
+}
+
+/* 🚨 BAŞLIĞIN GENİŞLİĞİNİ AYARLAMA (Flex içinde ezilmesin) */
+.birthday-title {
+    flex: 1; /* Ortadaki boşluğu başlık kaplasın */
+    margin: 0 !important; /* Flexbox hizaladığı için eski margini sıfırladık */
+}
+
+/* ==========================================================================
+   📱 MOBİL UYUMLULUK (Telefonda ekran patlamasın amınake)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .title-gif-container {
+        flex-direction: column; /* Telefonda ekran dar olduğu için alt alta dizilsinler */
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .birthday-gif {
+        width: 100px; /* Telefonda çok devasa olup ekranı kaplamasınlar diye biraz küçülttük */
+    }
+    
+    /* Mobilde sağdaki uzaylının ayna efektini sıfırlayalım düz dursun */
+    .alien-right {
+        transform: none; 
+    }
+}
+
+/* ==========================================================================
+   🎴 MODERN İÇERİK KARTI TASARIMI (PRO VERSİYON)
+   ========================================================================== */
+.content-card {
+    display: flex;
+    flex-direction: row; /* Büyük ekranda yazı ve resim yan yana */
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08); /* Pembe arka planın üstünde çok şık duran hafif şeffaf cam efekti */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* İncecik premium bir çerçeve */
+    border-radius: 20px; /* Köşeleri yumuşattık */
+    padding: 30px;
+    width: 90%;
+    margin: 20px auto;
+    gap: 30px; /* Yazı ve resim arasındaki nefes alma mesafesi */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Panonun üstüne hafifçe süzülüyormuş gibi gölge */
+}
+
+/* Sol taraftaki yazı alanı */
+.card-text-area {
+    flex: 1.3; /* Yazı alanı resme göre biraz daha geniş dursun */
+    font-family: 'MyHandsHold', cursive !important; /* O canavar fontu buraya da bastık */
+    font-size: 1.3rem;
+    color: #F5EDED; /* Kemik beyazı */
+    line-height: 1.6; /* Satır arası boşluğu rahatlattık, okunması kolay olsun */
+    text-align: left;
+}
+
+/* Sağ taraftaki resim alanı ve şık Polaroid/Çerçeve efekti */
+.card-image-area {
+    flex: 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card-img {
+    width: 100%;
+    max-width: 280px; /* Resim çok devasa olup kartı patlatmasın */
+    height: auto;
+    border-radius: 15px; /* Resmin köşeleri de yuvarlak */
+    border: 4px solid #F5EDED; /* Beyaz bir fotoğraf çerçevesi attık, retro dursun */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+/* Fareyle resmin üzerine gelince hafif tatlı bir kıpırdama efekti */
+.profile-card-img:hover {
+    transform: scale(1.03) rotate(2deg);
+}
+
+/* ==========================================================================
+   📱 MOBİL KONTROLÜ (TELEFONDA HER ŞEY CUK OTURACAK AMINAKE)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .content-card {
+        flex-direction: column-reverse; /* Telefonda ÖNCE yazı, ALTINA resim gelsin (Simetri düzgün dursun) */
+        padding: 20px;
+        gap: 20px;
+        width: 95%;
+    }
+
+    .card-text-area {
+        text-align: center; /* Telefonda yazıyı ortalarsak çok daha derli toplu durur */
+        font-size: 1.1rem;
+    }
+
+    .profile-card-img {
+        max-width: 200px; /* Telefon ekranında resim çok yer kaplamasın */
+    }
+}
+
+
+/* ==========================================================================
+   🐕 ŞIK PİBBLE KART VE BÜYÜME MOTORU
+   ========================================================================= */
+
+/* Ana kartın genel yapısı (Görseldeki pembe cam efektini korur) */
+.content-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    margin: 30px auto;
+    gap: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-text-area {
+    flex: 1.4;
+    font-family: 'MyHandsHold', cursive !important;
+    font-size: 1.3rem;
+    color: #F5EDED;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.card-image-area {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🐕 PIBBLLE KART DÜZENİ VE TAŞMA ENGELLEYİCİ - YENİ VERSİYON */
+.pibble-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px; /* Videonun devasa olup taşmasını engeller */
+    margin: 0 auto;
+}
+
+#pibbleImg {
+    width: 100%;       /* Kutunun genişliğine tam uyum sağlasın */
+    max-width: 320px;  /* Ekrandaki en ideal pibble boyutu amınake */
+    height: auto;
+    cursor: pointer;
+    background-color: #ffffff; /* Beyaz arka planı garantiliyoruz */
+    
+    /* Beyaz arka planın keskin durmaması için yumuşatılmış modern çerçeve */
+    border: 8px solid #ffffff; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    
+    /* Büyüme animasyonunun yağ gibi akması için transition */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Üzerine gelince tatlı bir kıpırdama efekti */
+#pibbleImg:hover {
+    transform: scale(1.03);
+}
+
+/* 🎯 JAVASCRIPT TIKLAYINCA ÇILGINLAR GİBİ BÜYÜME SINIFI */
+.pibble-crazy-mode {
+    transform: scale(1.6) !important; /* Kartın dışına taşmadan ekranda patlar */
+    z-index: 999 !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Videonun altındaki o küçük "(Tıkla bana amınake)" yazısı */
+.click-me-text {
+    font-family: 'MyHandsAreHolding', cursive, sans-serif !important;
+    color: rgba(255, 255, 255, 0.8) !important; /* Yazı pembe arka planda parlasın */
+    font-size: 1rem;
+    margin-top: 12px;
+    text-align: center;
+    pointer-events: none; /* Yazıya tıklayınca video buga girmesin */
+}
+  
+    
+
+
+/* ==========================================================================
+   📱 TELEFON (MOBIL) UYUMLULUK MOTORU
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .content-card {
+        flex-direction: column-reverse; /* Telefonda önce yazı sonra resim gelsin */
+        padding: 20px;
+        width: 95%;
+    }
+    .card-text-area {
+        text-align: center;
+    }
+    #pibbleImg {
+        width: 130px; /* Telefonda biraz daha derli toplu dursun */
+    }
+    .pibble-crazy-mode {
+        transform: scale(1.7) !important; /* Telefon ekranı dar olduğu için taşmasın diye mobilde büyümeyi 1.7 yaptık */
+    }
+}
+
+/* ==========================================================================
+   🎵 MODERN SES AÇ/KAPA BUTONU (PRO TASARIM)
+   ========================================================================== */
+.music-toggle-btn {
+    position: fixed; /* Sayfa aşağı kaysa bile sağ üstte çakılı kalır */
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Her şeyin önünde dursun amınake */
+    background: rgba(255, 255, 255, 0.15); /* Şık cam efekti */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%; /* Tam yuvarlak buton */
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Fareyle üzerine gelince pembe/beyaz parlasın */
+.music-toggle-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 15px rgba(245, 237, 237, 0.6);
+}
+
+/* Buton tıklandığında (ses kapatıldığında) duruşu hafif sönsün */
+.music-muted {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+/* 📱 Mobil telefon ayarı (Ekranda çok yer kaplamasın) */
+@media screen and (max-width: 768px) {
+    .music-toggle-btn {
+        top: 15px;
+        right: 15px;
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
     }
 }
