@@ -35,7 +35,7 @@ document.getElementById('curtain-content').addEventListener('click', function() 
     if (clickCount === 1) {
         kediFoto.className = "shake-1";
         kediFoto.src = "konusankedy.gif";
-        altyazi.innerText = "MUEHEHEHE! SENİ KANDIRDIK ESLEM!! BİİZ PİTOPATİPİ UZAYLILARIYIZ!! Cihazını Ele GEÇİRİYORUZ!!\nİş birliği yapmazsan kötü seyler olur. FOTOĞRAFA TIKLAMANI EMREDİYORUZ!!!";
+        altyazi.innerText = "MUEHEHEHE! SENİ KANDIRDIK ESLEM!! BİZ PAPOİ UZAYLILARIYIZ!! Cihazını Ele GEÇİRİYORUZ!!\nİş birliği yapmazsan kötü seyler olur. FOTOĞRAFA TIKLAMANI EMREDİYORUZ!!!";
     }
     else if (clickCount === 2) {
         kediFoto.className = "shake-2";
@@ -70,7 +70,7 @@ document.getElementById('curtain-content').addEventListener('click', function() 
     else if (clickCount === 8) {
         kediFoto.className = "";
         kediFoto.src = "papa.png";
-        altyazi.innerText = "... Bütün bir yolcuğumun böyle utanç duruma düşmem için miydi? Onurum kırıldı. \n Tıklayıp tıklamaman artık umrumda değil. İstersen tıkla sen bilirsin...";
+        altyazi.innerText = "... Bütün bir yolcuğumun böyle utanç duruma düşmem için miydi? WAAAAAAAAAAAAAAAAAAAAAAAAAĞĞĞHHHHH... \n Tıklayıp tıklamaman artık umrumda değil. İstersen tıkla sen bilirsin...";
 
         kediFoto.classList.remove("fade-in-effect", "shake-1", "shake-2", "shake-3");
         altyazi.classList.remove("fade-in-effect");
