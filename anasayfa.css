@@ -1,4 +1,6 @@
-/* 🔤 YEREL EL YAZISI FONT MOTORU ENJEKSİYONU */
+/* ==========================================================================
+    🔤 YEREL EL YAZISI FONT MOTORU ENJEKSİYONU
+   ========================================================================== */
 @font-face {
     font-family: 'MyHandsHold'; /* CSS içinde çağırırken kullanacağımız takma isim */
     src: url('MyHandsareHoldingYou.ttf') format('truetype'); /* Klasördeki dosyanın adı */
@@ -6,6 +8,9 @@
     font-style: normal;
 }
 
+/* ==========================================================================
+    🌌 SIFIRLAMA VE DEVASA GALAKSİ MOTORU
+   ========================================================================== */
 body {
     margin: 0;
     display: flex;
@@ -15,10 +20,6 @@ body {
     overflow-x: hidden;
     position: relative;
 }
-
-/* ==========================================================================
-   🌌 DEVASA GALAKSİ MOTORU (HATALARI SİLİNMİŞ KUSURSUZ VERSİYON)
-   ========================================================================== */
 
 /* 1. KATMAN: Çok Küçük ve Sık Yıldızlar */
 body::before {
@@ -30,7 +31,7 @@ body::before {
     height: 2px;
     z-index: -2;
     background: transparent;
-    box-shadow: 
+    box-shadow:
         15vw 10vh #fff, 25vw 45vh #fff, 40vw 15vh #fff, 55vw 70vh #fff, 70vw 30vh #fff, 85vw 80vh #fff,
         5vw 85vh #fff, 95vw 20vh #fff, 33vw 60vh #fff, 62vw 88vh #fff, 80vw 55vh #fff, 12vw 40vh #fff,
         50vw 50vh #fff, 75vw 15vh #fff, 22vw 92vh #fff, 88vw 5vh #fff, 45vw 78vh #fff, 68vw 65vh #fff,
@@ -50,7 +51,7 @@ body::before {
     z-index: -2;
     background: transparent;
     pointer-events: none;
-    box-shadow: 
+    box-shadow:
         8vw 20vh #fff, 22vw 60vh #fff, 47vw 5vh #fff, 51vw 80vh #fff, 66vw 15vh #fff, 81vw 90vh #fff,
         10vw 90vh #fff, 92vw 35vh #fff, 36vw 75vh #fff, 59vw 92vh #fff, 89vw 15vh #fff, 2vw 45vh #fff,
         42vw 52vh #fff, 71vw 28vh #fff, 19vw 88vh #fff, 86vw 60vh #fff, 61vw 10vh #fff, 74vw 70vh #fff;
@@ -79,19 +80,21 @@ body::after {
     50% { transform: rotate(4deg) scale(1.12); opacity: 1; }
     100% { transform: rotate(-3deg) scale(0.95); opacity: 0.75; }
 }
-/* TAM HAYALİNDEKİ O GENİŞ VE BÜYÜK KIRMIZI PANO */
+
+/* ==========================================================================
+    🟥 ANA PANO (#ABOUT_ME) VE INPUT AYARLARI
+   ========================================================================== */
 #about_me {
     color: #F5EDED;
     background-color: #db6aae;
     border: solid 6px #1b1616;
-    /* Sabit devasa yükseklik yerine esnek yükseklik verdik, içine çok şey ekleyeceksen bu şart bradar */
-    width: 1000px; 
+    width: 1000px;
     height: auto;
-    min-height: 850px; 
+    min-height: 850px;
     margin-top: 40px;
-    padding: 30px; /* İçerideki elementler rahat nefes alsın diye padding'i arttırdım */
+    padding: 30px; 
     margin-bottom: 60px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7); /* Panoya derinlik katması için şık bir gölge */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7); 
     box-sizing: border-box;
 }
 
@@ -131,7 +134,9 @@ input[type="range"]::-webkit-slider-thumb {
     opacity: 0.6;
 }
 
-/* SİYAH PERDE STİLLERİ */
+/* ==========================================================================
+    🎬 SİYAH PERDE VE GEÇİŞ STİLLERİ
+   ========================================================================== */
 #black-curtain {
     position: fixed;
     top: 0;
@@ -151,9 +156,8 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
 }
 
-
 #click-image {
-    width: 150px !important; 
+    width: 150px !important;
     height: auto !important;
 }
 
@@ -175,65 +179,22 @@ input[type="range"]::-webkit-slider-thumb {
     z-index: 9998;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
+#black-curtain img {
+    width: 420px; 
+    height: auto; 
+    max-width: 85%; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
-/* Köşelerdeki Sabit Fırlatıcı Emojiler */
-.emoji-launcher {
-    position: fixed;
-    bottom: 25px;
-    font-size: 60px; /* Emojileri de panoya uyumlu olarak biraz büyüterek 60px yaptım pampa */
-    z-index: 9999;
-    pointer-events: none;
-    user-select: none;
-    transition: opacity 1.5s ease-out; 
-    opacity: 0;
-}
-
-#launcher-left {
-    left: 30px;
-}
-
-#launcher-right {
-    right: 30px;
-    transform: scaleX(-1); 
+#black-curtain img:hover {
+    transform: scale(1.05);
 }
 
 /* ==========================================================================
-   🚨 YENİLENMİŞ DUYARLI MOBİL VE TABLET AYARLARI 🚨
-   ========================================================================== */
-@media screen and (max-width: 1040px) {
-    /* Bilgisayar ekranı küçüldüğünde veya tablet/telefon modunda kırmızı kutu taşmasın */
-    #about_me {
-        width: 95% !important; /* Ekranın %90'ını kaplasın, %10'luk şık siyah arka plan hep görünsün */
-        margin-top: 25px !important;
-        margin-bottom: 40px !important;
-        padding: 35px 25px !important;
-        box-sizing: border-box;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .emoji-launcher {
-        font-size: 42px !important;
-        bottom: 15px !important;
-    }
-    #launcher-left { left: 15px !important; }
-    #launcher-right { right: 15px !important; }
-}
-
-
-/* SİYAH PERDE RESİM BOYUTU (Bunu böyle sade ve net yazıyoruz, büyüme küçülme yok) */
-#click-image {
-    width: 150px !important; 
-    height: auto !important;
-}
-
-/* ==========================================================================
-   🌋 DEPREM / TİTREME ANİMASYONLARI (Kusursuz Hali)
+    🌋 DEPREM / TİTREME ANİMASYONLARI 
    ========================================================================== */
 @keyframes shake-light {
     0% { transform: translate(0, 0); }
@@ -272,254 +233,90 @@ input[type="range"]::-webkit-slider-thumb {
 .shake-2 { animation: shake-medium 0.1s infinite; }
 .shake-3 { animation: shake-heavy 0.08s infinite; }
 
-
-/* 5. Aşamada Yoktan Var Olma Efekti (Buraya !important çaktık ki kesin çalışsın) */
 .fade-in-effect {
     opacity: 0;
     animation: fadeInAnimation 2.5s forwards !important;
 }
 
 @keyframes fadeInAnimation {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1; /* Resmi ve yazıyı görünür kılan asıl sihir burası pampa */
-    }
-}
-
-
-/* ==========================================================================
-   👑 DOĞUM GÜNÜ BAŞLIK STİLİ (FİYAKALI VE PARLAK)
-   ========================================================================== */
-.birthday-title {
-    font-family: 'Poppins', 'Montserrat', sans-serif; /* Eğer bu fontlar yüklüyse çok klas durur */
-    font-size: 2.8rem; /* Mobilde ve PC'de heybetli durması için ideal boyut */
-    font-weight: 900; /* Kalın, okkalı bir duruş */
-    color: #F5EDED; /* Senin o çok sevdiğin kemik beyazı/açık renk */
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 35px; /* Altındaki içeriklerle arasında ferah bir boşluk bıraktık */
-    text-transform: uppercase; /* Tüm harfleri otomatik büyük yapar */
-    letter-spacing: 2px; /* Harflerin arası biraz açık olsun, premium dursun */
-    
-    /* Hafif parıltı efekti: Kırmızı panonun üstünde harika patlayacak */
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 
-                 3px 3px 0px #1b1616; /* Arkasına sert siyah bir gölge atarak jilet gibi keskinleştirdik */
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* ==========================================================================
-   👑 DOĞUM GÜNÜ BAŞLIĞI (KESKİNLİKLER VE GÖLGELER UÇURULDU)
+    👑 DOĞUM GÜNÜ BAŞLIĞI VE GIF KAPSAYICISI
    ========================================================================== */
-.birthday-title {
-    font-family: 'MyHandsHold', cursive !important;
-    font-size: 3.8rem; /* Boyutu el yazısına göre gayet ideal */
-    font-weight: normal !important; /* Kalınlaştırma kesinlikle yok, font incecik kalacak */
-    color: #F5EDED; /* Senin o kemik beyazı rengin */
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 35px;
-    letter-spacing: 0px; /* Harfler el yazısı gibi doğal mesafede dursun */
-
-    /* 🎯 İŞTE O KESKİNLİĞİ VE BEYAZ PARLAMAYI BİTİREN SİHİRLİ SATIR: */
-    text-shadow: none !important; /* Etrafındaki o yapay, keskin siyahlığı ve parıltıyı tamamen sildik amınake! */
-    
-    /* Yazının tarayıcıda daha pürüzsüz ve yumuşak görünmesi için bilişimci hilesi */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* Telefonlar için boyut ayarı */
-@media screen and (max-width: 768px) {
-    .birthday-title {
-        font-size: 2.4rem;
-        margin-bottom: 25px;
-        text-shadow: none !important; /* Mobilde de gölgesiz, dümdüz ve doğal */
-    }
-}
-
-/* Giriş perdesinin (#black-curtain) içindeki tüm resimleri hedefler */
-#black-curtain img {
-    width: 420px; /* Eski küçük halinden kurtarıp genişliği 320px yaptık! */
-    height: auto; /* Oran bozulmasın, fotoğraf yamulup çirkinleşmesin amınake */
-    max-width: 85%; /* Bilgisayarda büyük dursun ama telefonda ekrandan taşmasın diye sınır koyduk */
-    
-    /* Fotoğrafın etrafına uzay temasına uygun çok hafif, tatlı bir parlama efekti */
-    border-radius: 10px; /* Köşelerini hafifçe yumuşattık, premium dursun */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); 
-    
-    /* Tıklanabilir olduğunu belli etmek için fareyle üzerine gelince el işareti çıksın */
-    cursor: pointer; 
-    
-    /* JavaScript ile tıkladığında o titreme efektleri (shake) falan kopmasın diye geçişi yumuşatır */
-    transition: transform 0.2s ease-in-out; 
-}
-
-/* 🎯 HİLE: Fareyle fotoğrafın üzerine gelince hafifçe büyüsün (Eslem'e tıkla mesajı verir) */
-#black-curtain img:hover {
-    transform: scale(1.05);
-}
-
-/* ==========================================================================
-   📱 MOBİL GİRİŞ EKRANI AYARI
-   ========================================================================== */
-@media screen and (max-width: 768px) {
-    #black-curtain img {
-        width: 220px; /* Telefon ekranları dar olduğu için mobilde boyutu 220px'e sabitledik */
-    }
-}
-
-/* ==========================================================================
-   👾 UZAYLI GIFLERİ VE BAŞLIK FLEX HİZALAMA MOTORU
-   ========================================================================== */
-
-/* Başlığı ve iki gifi yan yana getiren ana kapsayıcı */
 .title-gif-container {
     display: flex;
-    justify-content: space-between; /* Soldaki sola, sağdaki sağa, başlık ortaya */
-    align-items: center; /* Dikeyde hepsini aynı hizada eşitler */
-    width: 95%; /* Panonun kenarlarına çok yapışmasınlar diye %95 yaptık */
-    margin: 15px auto 35px auto; /* Panonun üstünden ve altından boşluk */
-    gap: 15px; /* Elemanların arasına küçük bir güvenlik mesafesi */
+    justify-content: space-between; 
+    align-items: center; 
+    width: 95%; 
+    margin: 15px auto 35px auto; 
+    gap: 15px; 
 }
 
-/* 🎯 GIFLERİ BÜYÜTME OPERASYONU amınake */
+.birthday-title {
+    font-family: 'MyHandsHold', cursive !important;
+    font-size: 3.8rem; 
+    font-weight: normal !important; 
+    color: #F5EDED; 
+    text-align: center;
+    letter-spacing: 0px; 
+    text-shadow: none !important; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    flex: 1; 
+    margin: 0 !important; 
+}
+
 .birthday-gif {
-    width: 200px;  /* Eski küçük halinden kurtarıp genişliği 200px yaptık (İstediğin gibi arttır pampa) */
-    height: auto;  /* Oran bozulmasın, gif yamulmasın diye otomatik boy */
+    width: 200px;  
+    height: auto;  
     object-fit: contain;
 }
 
-/* Sağdaki gifi istersen sola baksın diye ters çevirebiliriz (Ayna efekti) */
 .alien-right {
-    transform: scaleX(-1); /* Eğer sağdaki de sola baksın istersen bu satırı SİL pampa, şu an birbirlerine bakıyorlar */
+    transform: scaleX(-1); 
 }
 
-/* 🚨 BAŞLIĞIN GENİŞLİĞİNİ AYARLAMA (Flex içinde ezilmesin) */
-.birthday-title {
-    flex: 1; /* Ortadaki boşluğu başlık kaplasın */
-    margin: 0 !important; /* Flexbox hizaladığı için eski margini sıfırladık */
+.emoji-launcher {
+    position: fixed;
+    bottom: 25px;
+    font-size: 60px; 
+    z-index: 9999;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 1.5s ease-out;
+    opacity: 0;
 }
 
-/* ==========================================================================
-   📱 MOBİL UYUMLULUK (Telefonda ekran patlamasın amınake)
-   ========================================================================== */
-@media screen and (max-width: 768px) {
-    .title-gif-container {
-        flex-direction: column; /* Telefonda ekran dar olduğu için alt alta dizilsinler */
-        justify-content: center;
-        gap: 10px;
-    }
-    
-    .birthday-gif {
-        width: 100px; /* Telefonda çok devasa olup ekranı kaplamasınlar diye biraz küçülttük */
-    }
-    
-    /* Mobilde sağdaki uzaylının ayna efektini sıfırlayalım düz dursun */
-    .alien-right {
-        transform: none; 
-    }
-}
+#launcher-left { left: 30px; }
+#launcher-right { right: 30px; transform: scaleX(-1); }
 
 /* ==========================================================================
-   🎴 MODERN İÇERİK KARTI TASARIMI (PRO VERSİYON)
+    🎴 MODERN İÇERİK KARTI TASARIMI
    ========================================================================== */
 .content-card {
     display: flex;
-    flex-direction: row; /* Büyük ekranda yazı ve resim yan yana */
+    flex-direction: row; 
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.08); /* Pembe arka planın üstünde çok şık duran hafif şeffaf cam efekti */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* İncecik premium bir çerçeve */
-    border-radius: 20px; /* Köşeleri yumuşattık */
-    padding: 30px;
-    width: 90%;
-    margin: 20px auto;
-    gap: 30px; /* Yazı ve resim arasındaki nefes alma mesafesi */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Panonun üstüne hafifçe süzülüyormuş gibi gölge */
-}
-
-/* Sol taraftaki yazı alanı */
-.card-text-area {
-    flex: 1.3; /* Yazı alanı resme göre biraz daha geniş dursun */
-    font-family: 'MyHandsHold', cursive !important; /* O canavar fontu buraya da bastık */
-    font-size: 1.3rem;
-    color: #F5EDED; /* Kemik beyazı */
-    line-height: 1.6; /* Satır arası boşluğu rahatlattık, okunması kolay olsun */
-    text-align: left;
-}
-
-/* Sağ taraftaki resim alanı ve şık Polaroid/Çerçeve efekti */
-.card-image-area {
-    flex: 0.9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.profile-card-img {
-    width: 100%;
-    max-width: 280px; /* Resim çok devasa olup kartı patlatmasın */
-    height: auto;
-    border-radius: 15px; /* Resmin köşeleri de yuvarlak */
-    border: 4px solid #F5EDED; /* Beyaz bir fotoğraf çerçevesi attık, retro dursun */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-}
-
-/* Fareyle resmin üzerine gelince hafif tatlı bir kıpırdama efekti */
-.profile-card-img:hover {
-    transform: scale(1.03) rotate(2deg);
-}
-
-/* ==========================================================================
-   📱 MOBİL KONTROLÜ (TELEFONDA HER ŞEY CUK OTURACAK AMINAKE)
-   ========================================================================== */
-@media screen and (max-width: 768px) {
-    .content-card {
-        flex-direction: column-reverse; /* Telefonda ÖNCE yazı, ALTINA resim gelsin (Simetri düzgün dursun) */
-        padding: 20px;
-        gap: 20px;
-        width: 95%;
-    }
-
-    .card-text-area {
-        text-align: center; /* Telefonda yazıyı ortalarsak çok daha derli toplu durur */
-        font-size: 1.1rem;
-    }
-
-    .profile-card-img {
-        max-width: 200px; /* Telefon ekranında resim çok yer kaplamasın */
-    }
-}
-
-
-/* ==========================================================================
-   🐕 ŞIK PİBBLE KART VE BÜYÜME MOTORU
-   ========================================================================= */
-
-/* Ana kartın genel yapısı (Görseldeki pembe cam efektini korur) */
-.content-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    border-radius: 20px; 
     padding: 30px;
     width: 90%;
     margin: 30px auto;
-    gap: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    gap: 30px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
 }
 
 .card-text-area {
-    flex: 1.4;
-    font-family: 'MyHandsHold', cursive !important;
+    flex: 1.4; 
+    font-family: 'MyHandsHold', cursive !important; 
     font-size: 1.3rem;
-    color: #F5EDED;
-    line-height: 1.6;
+    color: #F5EDED; 
+    line-height: 1.6; 
     text-align: left;
 }
 
@@ -530,89 +327,75 @@ input[type="range"]::-webkit-slider-thumb {
     align-items: center;
 }
 
-/* 🐕 PIBBLLE KART DÜZENİ VE TAŞMA ENGELLEYİCİ - YENİ VERSİYON */
+.profile-card-img {
+    width: 100%;
+    max-width: 280px; 
+    height: auto;
+    border-radius: 15px; 
+    border: 4px solid #F5EDED; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.profile-card-img:hover {
+    transform: scale(1.03) rotate(2deg);
+}
+
+/* ==========================================================================
+    🐕 PİBBLE SPESİFİK DÜZENLERİ
+   ========================================================================== */
 .pibble-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 400px; /* Videonun devasa olup taşmasını engeller */
+    max-width: 400px; 
     margin: 0 auto;
 }
 
 #pibbleImg {
-    width: 100%;       /* Kutunun genişliğine tam uyum sağlasın */
-    max-width: 320px;  /* Ekrandaki en ideal pibble boyutu amınake */
+    width: 100%;       
+    max-width: 320px;  
     height: auto;
     cursor: pointer;
-    background-color: #ffffff; /* Beyaz arka planı garantiliyoruz */
-    
-    /* Beyaz arka planın keskin durmaması için yumuşatılmış modern çerçeve */
-    border: 8px solid #ffffff; 
-    border-radius: 20px; 
+    background-color: #ffffff; 
+    border: 8px solid #ffffff;
+    border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    
-    /* Büyüme animasyonunun yağ gibi akması için transition */
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Üzerine gelince tatlı bir kıpırdama efekti */
 #pibbleImg:hover {
     transform: scale(1.03);
 }
 
-/* 🎯 JAVASCRIPT TIKLAYINCA ÇILGINLAR GİBİ BÜYÜME SINIFI */
 .pibble-crazy-mode {
-    transform: scale(1.6) !important; /* Kartın dışına taşmadan ekranda patlar */
+    transform: scale(1.6) !important; 
     z-index: 999 !important;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Videonun altındaki o küçük "(Tıkla bana amınake)" yazısı */
 .click-me-text {
-    font-family: 'MyHandsAreHolding', cursive, sans-serif !important;
-    color: rgba(255, 255, 255, 0.8) !important; /* Yazı pembe arka planda parlasın */
+    font-family: 'MyHandsHold', cursive, sans-serif !important;
+    color: rgba(255, 255, 255, 0.8) !important; 
     font-size: 1rem;
     margin-top: 12px;
     text-align: center;
-    pointer-events: none; /* Yazıya tıklayınca video buga girmesin */
-}
-  
-    
-
-
-/* ==========================================================================
-   📱 TELEFON (MOBIL) UYUMLULUK MOTORU
-   ========================================================================== */
-@media screen and (max-width: 768px) {
-    .content-card {
-        flex-direction: column-reverse; /* Telefonda önce yazı sonra resim gelsin */
-        padding: 20px;
-        width: 95%;
-    }
-    .card-text-area {
-        text-align: center;
-    }
-    #pibbleImg {
-        width: 130px; /* Telefonda biraz daha derli toplu dursun */
-    }
-    .pibble-crazy-mode {
-        transform: scale(1.7) !important; /* Telefon ekranı dar olduğu için taşmasın diye mobilde büyümeyi 1.7 yaptık */
-    }
+    pointer-events: none; 
 }
 
 /* ==========================================================================
-   🎵 MODERN SES AÇ/KAPA BUTONU (PRO TASARIM)
+    🎵 MODERN SES AÇ/KAPA BUTONU
    ========================================================================== */
 .music-toggle-btn {
-    position: fixed; /* Sayfa aşağı kaysa bile sağ üstte çakılı kalır */
+    position: fixed; 
     top: 20px;
     right: 20px;
-    z-index: 1000; /* Her şeyin önünde dursun amınake */
-    background: rgba(255, 255, 255, 0.15); /* Şık cam efekti */
+    z-index: 10000; /* Perdenin de önüne geçsin diye z-index uçuruldu amınake */
+    background: rgba(255, 255, 255, 0.15); 
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%; /* Tam yuvarlak buton */
+    border-radius: 50%; 
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -624,22 +407,86 @@ input[type="range"]::-webkit-slider-thumb {
     transition: all 0.3s ease-in-out;
 }
 
-/* Fareyle üzerine gelince pembe/beyaz parlasın */
 .music-toggle-btn:hover {
     transform: scale(1.1);
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 0 15px rgba(245, 237, 237, 0.6);
 }
 
-/* Buton tıklandığında (ses kapatıldığında) duruşu hafif sönsün */
 .music-muted {
-    background: rgba(0, 0, 0, 0.3) !important;
+    background: rgba(0, 0, 0, 0.6) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
     box-shadow: none !important;
 }
 
-/* 📱 Mobil telefon ayarı (Ekranda çok yer kaplamasın) */
+/* ==========================================================================
+    📱 RESPONSIVE - MOBİL VE TABLET UYUMLULUK MOTORU
+   ========================================================================== */
+@media screen and (max-width: 1040px) {
+    #about_me {
+        width: 95% !important; 
+        margin-top: 25px !important;
+        margin-bottom: 40px !important;
+        padding: 35px 25px !important;
+        box-sizing: border-box;
+    }
+}
+
 @media screen and (max-width: 768px) {
+    .birthday-title {
+        font-size: 2.4rem;
+        margin-bottom: 25px;
+    }
+
+    .title-gif-container {
+        flex-direction: column; 
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .birthday-gif {
+        width: 120px; 
+    }
+    
+    .alien-right {
+        transform: none;
+    }
+
+    .content-card {
+        flex-direction: column-reverse; 
+        padding: 20px;
+        gap: 20px;
+        width: 95%;
+    }
+
+    .card-text-area {
+        text-align: center; 
+        font-size: 1.1rem;
+    }
+
+    .profile-card-img {
+        max-width: 200px; 
+    }
+
+    #pibbleImg {
+        max-width: 180px; 
+    }
+    
+    .pibble-crazy-mode {
+        transform: scale(1.4) !important; 
+    }
+
+    #black-curtain img {
+        width: 220px; 
+    }
+
+    .emoji-launcher {
+        font-size: 42px !important;
+        bottom: 15px !important;
+    }
+    #launcher-left { left: 15px !important; }
+    #launcher-right { right: 15px !important; }
+
     .music-toggle-btn {
         top: 15px;
         right: 15px;

@@ -8,20 +8,21 @@
     <script src="anasayfa.js" defer></script>
 </head>
 <body class="animated-background">
-<div class="galaxy-stars"></div>
-    <!-- 1. PERDE: SİYAH GİRİŞ PERDESİ (Body'nin hemen içine, en üste yazılır) -->
-<div id="black-curtain">
-    <div id="curtain-content">
-        <!-- İlk başta hiçbir sallantı sınıfı yok, dümdüz ve hareketsiz duracak -->
-        <img src="isadami.jpg" alt="Sürpriz" id="click-image">
-        <p id="click-text">Hey Merhabalar!! Rahatsız ettiğim için özür dilerim efendim. <br> 
-        Sizlere hayatınızda bir daha göremeyeceğiniz bir teklifle gelmiş bulunmaktayım!!<br> 
-        BEDAVA 10000000000 ROBUX KAZANMAK İSTER MİSİNİZ? TEK YAPMANIZ GEREKEN FOTOĞRAFA TIKLAMAK! </p>
+
+    <div class="galaxy-stars"></div>
+
+    <div id="black-curtain">
+        <div id="curtain-content">
+            <img src="isadami.jpg" alt="Sürpriz" id="click-image">
+            <p id="click-text">Hey Merhabalar!! Rahatsız ettiğim için özür dilerim efendim. <br> 
+            Sizlere hayatınızda bir daha göremeyeceğiniz bir teklifle gelmiş bulunmaktayım!!<br> 
+            BEDAVA 10000000000 ROBUX KAZANMAK İSTER MİSİNİZ? TEK YAPMANIZ GEREKEN FOTOĞRAFA TIKLAMAK! </p>
+        </div>
     </div>
-</div>
+
+    <button id="musicToggleBtn" class="music-toggle-btn" title="Müziği Aç/Kapa">🔊</button>
 
     <audio id="bg-music" src="iikeslem.mp3" loop></audio>
-
     <canvas id="confetti-canvas"></canvas>
 
     <div id="launcher-left" class="emoji-launcher" style="display: none;">🎉</div>
@@ -29,65 +30,45 @@
 
     <div id="main-content" style="display: none;">
         <div id="about_me">
-    <!-- 👾 GIFLERİ VE BAŞLIĞI HİZALAYAN ANA SARMALAYICI KATMAN -->
-<div class="title-gif-container">
-    <!-- SOLDAKİ YEŞİL UZAYLI -->
-    <img src="yesiluzayli.gif" class="birthday-gif alien-left" alt="Uzaylı Sol">
-    
-    <!-- ORTADAKİ BAŞLIK (Zaten sendeki başlık, yerini buraya taşıyoruz pampa) -->
-    <h1 class="birthday-title">DOĞUM GÜNÜN KUTLU OLSUN<br>ESLEM!!</h1>
-    
-    <!-- SAĞDAKİ AYNI YEŞİL UZAYLI -->
-    <img src="yesiluzayli.gif" class="birthday-gif alien-right" alt="Uzaylı Sağ">
-</div>
-<!-- 🎵 ARKA PLAN MÜZİĞİ KONTROL BUTONU amınake -->
-<button id="musicToggleBtn" class="music-toggle-btn" title="Müziği Aç/Kapa">
-    <span id="musicIcon">🔊</span> <!-- İlk başta müzik açık başlayacağı için ses açık ikonu -->
-</button>
-     <div class="content-card">
-    
-    <div class="card-text-area">
-        <p>Buraya Eslem için yazmak istediğin o şık, anlamlı ya da eğlenceli giriş metnini ekle pampa. Yazı fontu zaten o yüklediğimiz orijinal el yazısı fontuyla birleşince burada resmen akacak!</p>
-        <p>İstediğin kadar paragraf ekleyebilirsin, Flexbox sayesinde yazı uzasa bile sağdaki resimle harika bir dengede duracaklar.</p>
-        Buraya Eslem için yazmak istediğin o şık, anlamlı ya da eğlenceli giriş metnini ekle pampa. Yazı fontu zaten o yüklediğimiz orijinal el yazısı fontuyla birleşince burada resmen akacak!</p>
-        <p>İstediğin kadar paragraf ekleyebilirsin, Flexbox sayesinde yazı uzasa bile sağdaki resimle harika bir dengede duracaklar.</p>
-    </div>
+            
+            <div class="title-gif-container">
+                <img src="yesiluzayli.gif" class="birthday-gif alien-left" alt="Uzaylı Sol">
+                
+                <h1 class="birthday-title">DOĞUM GÜNÜN KUTLU OLSUN<br>ESLEM!!</h1>
+                
+                <img src="yesiluzayli.gif" class="birthday-gif alien-right" alt="Uzaylı Sağ">
+            </div>
 
-    <div class="card-image-area">
-        <img src="KANDİRDİM.jpg" class="profile-card-img" alt="Eslem Proje Resim">
-    </div>
+            <div class="content-card">
+                <div class="card-text-area">
+                    <p>Buraya Eslem için yazmak istediğin o şık, anlamlı ya da eğlenceli giriş metnini ekle pampa. Yazı fontu zaten o yüklediğimiz orijinal el yazısı fontuyla birleşince burada resmen akacak!</p>
+                    <p>İstediğin kadar paragraf ekleyebilirsin, Flexbox sayesinde yazı uzasa bile sağdaki resimle harika bir dengede duracaklar.</p>
+                    <p>Buraya Eslem için yazmak istediğin o şık, anlamlı ya da eğlenceli giriş metnini ekle pampa. Yazı fontu zaten o yüklediğimiz orijinal el yazısı fontuyla birleşince burada resmen akacak!</p>
+                    <p>İstediğin kadar paragraf ekleyebilirsin, alanımız geniş ve konseptimize tamamen uyumlu!</p>
+                </div>
+                <div class="card-image-area">
+                    <img src="KANDİRDİM.jpg" class="profile-card-img" alt="Eslem Proje Resim">
+                </div>
+            </div>
 
-</div>
+            <div class="content-card">
+                <div class="card-text-area">
+                    <h3>Eslem'e Özel Bir Not... 💫</h3>
+                    <p>Buraya pibble'ın yanına gelmesini istediğin o şık, komik ya da anlamlı yazıları döşe pampa. Yazı ne kadar uzarsa uzasın sağdaki pibble ile hizası bozulmayacak amınake.</p>
+                    <p>İstediğin kadar paragraf ekleyebilirsin, alanımız geniş ve konseptimize tamamen uyumlu!</p>
+                </div>
 
-<div class="action-buttons-container">
-    </div>
+                <div class="card-image-area">
+                    <div class="pibble-box">
+                        <video src="osuruk.mp4" id="pibbleImg" playsinline></video>
+                        <span class="click-me-text">(Tıkla bana amınake)</span>
+                    </div>
+                </div>
+            </div>
 
+            <audio id="osurukSes" src="osuruksesi.mp3" preload="auto"></audio>
 
-<!-- 🎴 PİBBLE VE YAZI ALANI BİR ARADA (MODERN KART) -->
-<div class="content-card">
-    
-    <!-- 📄 SOL TARAF: ESLEM'E YAZACAĞIN YAZI ALANI -->
-    <div class="card-text-area">
-        <h3>Eslem'e Özel Bir Not... 💫</h3>
-        <p>Buraya pibble'ın yanına gelmesini istediğin o şık, komik ya da anlamlı yazıları döşe pampa. Yazı ne kadar uzarsa uzasın sağdaki pibble ile hizası bozulmayacak amınake.</p>
-        <p>İstediğin kadar paragraf ekleyebilirsin, alanımız geniş ve konseptimize tamamen uyumlu!</p>
-    </div>
-
-    <!-- 🐕 SAĞ TARAF: TIKLANINCA DELİREN PİBBLE ALANI -->
-    <div class="card-image-area">
-        <div class="pibble-box">
-            <!-- Arkadaşının çizdiği o efsane osuruk.mp4 veya gif dosyasını buraya bağla -->
-            <video src="osuruk.mp4" id="pibbleImg" alt="Osuran Pibble"> </video>
-            <span class="click-me-text">(Tıkla bana amınake)</span>
         </div>
     </div>
-
-</div>
-
-<!-- 🔊 ARKA PLANDA HAZIR BEKLEYEN OSURUK SESİ -->
-<audio id="osurukSes" src="osuruksesi.mp3" preload="auto"></audio>
-
-</div>
-
 </body>
-</html> 
+</html>
