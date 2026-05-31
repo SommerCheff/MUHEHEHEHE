@@ -1,7 +1,19 @@
 let clickCount = 0;
+let isClickLocked = false; // Telefonlar sapıtmasın diye koyduğumuz sihirli kilit amınake
 
 document.getElementById('curtain-content').addEventListener('click', function() {
-    clickCount++; // Sayacı arttır
+    // Eğer kilit aktifse (yani telefon çok hızlı üst üste tıklamaya çalışıyorsa) işlemi engelle
+    if (isClickLocked) return;
+
+    // Kilidi devreye sok
+    isClickLocked = true;
+    
+    // Yarım saniye (500ms) sonra kilidi tekrar aç ki bir sonraki tıkı atabilsin
+    setTimeout(() => {
+        isClickLocked = false;
+    }, 500);
+
+    clickCount++; // Şimdi sayacı güvenle 1 arttırabiliriz pampa
 
     const kediFoto = document.getElementById('click-image');
     const altyazi = document.getElementById('click-text');
@@ -24,26 +36,22 @@ document.getElementById('curtain-content').addEventListener('click', function() 
     else if (clickCount === 4) {
         // 4. TIKLAMA: Komik fotoğraf gelir, sallanma hafifler
         kediFoto.className = "shake-1"; 
-        kediFoto.src = "yesiluzayli.gif"; // Komik fotoğrafının adı
+        kediFoto.src = "yesiluzayli.gif"; 
         altyazi.innerText = "HAYİR GEÇ BUNU ÇABUK BAS!!!\nBU SON ŞANSIN İNSAN KILIĞINDAKİ ŞEY!!!";
     } 
     else if (clickCount === 5) {
-        // 5. TIKLAMA: KRİTİK NOKTA! Titreme biter, her şey sıfırlanır ve yavaşça yeni foto/yazı gelir
-        kediFoto.className = ""; // Titreşim sınıflarını tamamen sildik
-        kediFoto.src = "papa.PNG"; // Son asil fotoğrafının adı
+        // 5. TIKLAMA: KRİTİK NOKTA! Titreme biter, yavaşça yeni foto/yazı gelir
+        kediFoto.className = ""; 
+        kediFoto.src = "papa.png"; 
         
-        // Yazının 4. etapta kalmaması için burada net olarak yeni metni atıyoruz!
         altyazi.innerText = "Sanirim artık bir anlamı kalmadı... İyice rezil olduk...\nAma 1 kez daha tıklamaktan zarar gelmez!! Sadece 1 kezcik daha tıkla insan kılıklı şey!!";
 
-        // Eski sınıfları tamamen kazıyalım
         kediFoto.classList.remove("fade-in-effect", "shake-1", "shake-2", "shake-3");
         altyazi.classList.remove("fade-in-effect");
 
-        // Tarayıcının animasyonu tetiklemesi için görünümü anlık sıfırlıyoruz (Bilişimci hilesi)
         void kediFoto.offsetWidth;
         void altyazi.offsetWidth;
 
-        // Şimdi ikisine de aynı anda yoktan var olma efektini enjekte ediyoruz
         kediFoto.classList.add("fade-in-effect");
         altyazi.classList.add("fade-in-effect");
     } 
