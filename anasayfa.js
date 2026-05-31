@@ -35,25 +35,38 @@ function startConfetti() {
     let confeties = [];
     const colors = ["#D72323", "#F5EDED", "#333333", "#F4CE14", "#3A98B9"];
 
+    // AKILLI MOBİL KONTROLÜ: Cihaz telefon mu yoksa bilgisayar mı?
+    const isMobile = window.innerWidth <= 768;
+
     function fire(x, angle) {
-        for (let i = 0; i < 250; i++) {
+        // ÇAKALLIK: Mobilde yoğunluk azalsın (100 tane), PC'de o çılgın 250 adet fırlasın
+        const particleCount = isMobile ? 100 : 250;
+
+        for (let i = 0; i < particleCount; i++) {
             confeties.push({
                 x: x,
                 y: canvas.height - 30, 
                 angle: angle + (Math.random() * 1.4 - 0.7), 
-                speed: Math.random() * 24 + 8,              
-                radius: Math.random() * 4 + 4,              
+                // Mobilde fırlama hızını kıstık ki dar ekranda mermi gibi gitmesinler
+                speed: isMobile ? (Math.random() * 14 + 6) : (Math.random() * 24 + 8),              
+                // Mobilde kağıt parçalarını ufaltarak o kaba görüntüyü yok ettik
+                radius: isMobile ? (Math.random() * 2.5 + 2.5) : (Math.random() * 4 + 4),              
                 color: colors[Math.floor(Math.random() * colors.length)],
                 opacity: 1,
-                gravity: 0.25,
+                gravity: isMobile ? 0.2 : 0.25, // Mobilde daha hafif süzülsünler
                 drag: 0.95
             });
         }
     }
 
-    // Sol ve Sağ köşelerden fırlat
-    fire(40, -Math.PI / 4);
-    fire(canvas.width - 40, -3 * Math.PI / 4);
+    // Sol ve Sağ köşelerden tam o çizdiğin fırlatıcılardan ateşle
+    if (isMobile) {
+        fire(25, -Math.PI / 4);
+        fire(canvas.width - 25, -3 * Math.PI / 4);
+    } else {
+        fire(40, -Math.PI / 4);
+        fire(canvas.width - 40, -3 * Math.PI / 4);
+    }
 
     const leftLauncher = document.getElementById('launcher-left');
     const rightLauncher = document.getElementById('launcher-right');
@@ -71,7 +84,6 @@ function startConfetti() {
             p.y += p.gravity;         
             p.opacity -= 0.006; 
 
-            // Kâğıtların o anki şeffaflık durumunu emojilere de aktarmak için yakalıyoruz
             currentOpacity = p.opacity;
 
             ctx.beginPath();
@@ -85,7 +97,6 @@ function startConfetti() {
             }
         });
 
-        // Kâğıtlar şeffaflaştıkça köşedeki sabit emojileri de aynı oranda eritip siliyoruz!
         if (leftLauncher && rightLauncher) {
             if (currentOpacity > 0) {
                 leftLauncher.style.opacity = currentOpacity;

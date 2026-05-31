@@ -3,38 +3,36 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-  background-color: #070102; /* Ana siyah rengin sabit */
-  overflow-x: hidden;
+    background-color: #070102; /* Ana siyah rengin sabit */
+    overflow-x: hidden;
 }
 
 /* Performans canavarı katman */
 body::before {
-  content: "";
-  position: fixed; /* Sayfa kaysa da sabit kalır, performansı artırır */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;min-height: 100vh;
-  /* GPU dostu gradient */
-  background: linear-gradient(180deg, #070102 0%, #240101 80%, #3a0101 100%);
-  z-index: -1;
-  
-  /* Sadece opacity (saydamlık) değiştiği için GPU kullanılır */
-  animation: smoothBreath 8s ease-in-out infinite alternate;
-  will-change: opacity; /* Tarayıcıya önceden haber veriyoruz */
+    content: "";
+    position: fixed; /* Sayfa kaysa da sabit kalır, performansı arttırır */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; min-height: 100vh;
+    /* GPU dostu gradient */
+    background: linear-gradient(180deg, #070102 0%, #240101 80%, #3a0101 100%);
+    z-index: -1;
+    /* Sadece opacity (saydamlık) değiştiği için GPU kullanılır */
+    animation: smoothBreath 8s ease-in-out infinite alternate;
+    will-change: opacity; /* Tarayıcıya önceden haber veriyoruz */
 }
 
 @keyframes smoothBreath {
-  0% { opacity: 0.2; }   /* Renkler daha sönük, siyah baskın */
-  100% { opacity: 1; }   /* Renkler daha canlı */
+    0% { opacity: 0.2; } /* Renkler daha sönük, siyah baskın */
+    100% { opacity: 1; }  /* Renkler daha canlı */
 }
 
-
-#about_me{
+#about_me {
     color: #F5EDED;
     background-color: #D72323;
     border: solid 6px #1b1616;
-    height: 1800px;
+    height: 1500px;
     width: 750px;
     margin-top: 50px;
     padding: 10px;
@@ -42,44 +40,40 @@ body::before {
 }
 
 input[type="range"] {
-
-  -webkit-appearance: none; /* Chrome, Safari, Opera */
-  appearance: none;
-  width: 100%;
-  background: transparent; /* Arka planı temizle */
-
+    -webkit-appearance: none; /* Chrome, Safari, Opera */
+    appearance: none;
+    width: 100%;
+    background: transparent; /* Arka planı temizle */
 }
+
 input[type="range"]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 10px;
-  border: solid 3px #3E3636;
-  background: #F5EDED; /* Çubuğun rengi */
-  border-radius: 2px;
+    width: 100%;
+    height: 10px;
+    border: solid 2px #3E3636;
+    background: #F5EDED; /* Çubuğun rengi */
+    border-radius: 2px;
 }
+
 input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 17px;
-  width: 17px;
-  border: solid 3px #3E3636;
-  border-radius: 40%;
-  background: #F5EDED; /* Pembe kedi patisi rengi gibi! */
-  cursor: pointer;
-  margin-top: -6px; /* Çubuğa ortalamak için (Yükseklik/2 farkı) */
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    -webkit-appearance: none;
+    height: 17px;
+    width: 17px;
+    border: solid 3px #3E3636;
+    border-radius: 50%;
+    background: #F5EDED; /* Pembe kedi patisi rengi gibi! */
+    cursor: pointer;
+    margin-top: -5px; /* Çubuğa ortalamak için (Yükseklik/2 farkı) */
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
-
-.resimkedi{
-    width: 180px;   /* Genişliği sabitle */
-    height: 180px;  /* Yüksekliği sabitle */
+.resimkedi {
+    width: 180px; /* Genişliği sabitle */
+    height: 180px; /* Yüksekliği sabitle */
     cursor: pointer;
     object-fit: cover; /* Resim yamulmadan kutuyu doldurur */
     transition: 0.3s;
     opacity: 0.6;
 }
-
-
-/* KONFETİ KISMI BURASI ONA GORE
 
 /* SİYAH PERDE STİLLERİ */
 #black-curtain {
@@ -125,7 +119,6 @@ input[type="range"]::-webkit-slider-thumb {
     z-index: 9998;
 }
 
-/* Resmin nabız gibi büyüyüp küçülme animasyonu */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.08); }
@@ -140,9 +133,8 @@ input[type="range"]::-webkit-slider-thumb {
     z-index: 9999;
     pointer-events: none;
     user-select: none;
-    /* Akıcı şekilde silinebilmesi için CSS transition ekledik */
     transition: opacity 1.5s ease-out; 
-    opacity: 0; /* İlk başta tamamen görünmez olacaklar, JS ile göstereceğiz */
+    opacity: 0;
 }
 
 #launcher-left {
@@ -151,6 +143,28 @@ input[type="range"]::-webkit-slider-thumb {
 
 #launcher-right {
     right: 25px;
-    /* NOKTA ATIŞI AYAR: Sağdaki emojiyi yatayda ters çevirip sola baktırıyoruz */
     transform: scaleX(-1); 
+}
+
+/* ==========================================================================
+   🚨 MOBİL CİHAZLAR İÇİN JİLET GİBİ DUYARLILIK AYARI (MEDIA QUERY) 🚨
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    /* 1. Kırmızı kutuyu telefon ekranına tam oturtuyoruz, sıkışma bitecek */
+    #about_me {
+        width: 85% !important; /* Ekranın %85'ini kaplasın, sağdan soldan tatlı bir boşluk kalsın */
+        height: auto !important; /* Mobilde içeriğe göre uzasın, hantal sabit boyuttan kurtulsun */
+        min-height: 500px !important;
+        margin-top: 30px !important;
+        margin-bottom: 50px !important;
+        border-width: 4px !important; /* Mobilde çerçeve biraz daha kibar dursun */
+    }
+
+    /* 2. Köşelerdeki fırlatıcı emojileri mobilde biraz küçültüyoruz ki göz tırmalamasın */
+    .emoji-launcher {
+        font-size: 35px !important;
+        bottom: 15px !important;
+    }
+    #launcher-left { left: 10px !important; }
+    #launcher-right { right: 10px !important; }
 }
