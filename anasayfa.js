@@ -69,9 +69,24 @@ document.getElementById('curtain-content').addEventListener('click', function() 
     }
     else if (clickCount === 8) {
         kediFoto.className = "";
+        kediFoto.src = "papa1.png";
+        altyazi.innerText = "... Bütün bir yolcuğumun böylesine...\n Böylesine utanç verici bir duruma düşmem için miydi?";
+    }
+     else if (clickCount === 9) {
+        kediFoto.className = "";
+        kediFoto.src = "papa12.png";
+        altyazi.innerText = "....."
+    }
+     else if (clickCount === 10) {
+        kediFoto.className = "";
         kediFoto.src = "papa.png";
-        altyazi.innerText = "... Bütün bir yolcuğumun böyle utanç duruma düşmem için miydi? WAAAAAAAAAAAAAAAAAAAAAAAAAĞĞĞHHHHH... \n Tıklayıp tıklamaman artık umrumda değil. İstersen tıkla sen bilirsin...";
-
+        altyazi.innerText = "WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAĞĞĞHHHHH...";
+    }
+     else if (clickCount === 11) {
+        kediFoto.className = "";
+        kediFoto.src = "papa12.png";
+        altyazi.innerText = "Artık tıklayıp tıklamaman umrumda değil. Tıklasan fena olmaz gerci...🥺";
+    
         kediFoto.classList.remove("fade-in-effect", "shake-1", "shake-2", "shake-3");
         altyazi.classList.remove("fade-in-effect");
 
@@ -82,7 +97,7 @@ document.getElementById('curtain-content').addEventListener('click', function() 
         altyazi.classList.add("fade-in-effect");
     }
     // 🎯 ESKİ clickCount === 9 BLOĞUNU BUL VE BUNUNLA DEĞİŞTİR:
-    else if (clickCount === 9) {
+    else if (clickCount === 12) {
         const curtain = document.getElementById('black-curtain');
         curtain.style.opacity = '0';
         
