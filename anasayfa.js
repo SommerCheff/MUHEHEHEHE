@@ -81,16 +81,23 @@ document.getElementById('curtain-content').addEventListener('click', function() 
         kediFoto.classList.add("fade-in-effect");
         altyazi.classList.add("fade-in-effect");
     }
+    // 🎯 ESKİ clickCount === 9 BLOĞUNU BUL VE BUNUNLA DEĞİŞTİR:
     else if (clickCount === 9) {
         const curtain = document.getElementById('black-curtain');
         curtain.style.opacity = '0';
         
         setTimeout(() => {
             curtain.style.visibility = 'hidden';
-            curtain.style.display = 'none'; // Ekrandan tamamen siliyoruz ki arkaya tıklanabilsin
+            curtain.style.display = 'none'; 
         }, 800);
 
         document.getElementById('main-content').style.display = 'block';
+        
+        // 🎯 YENİ: Perde kalktığı an müzik butonunu fiyakalı bir şekilde görünür yapıyoruz
+        if (musicToggleBtn) {
+            musicToggleBtn.style.opacity = '1';
+            musicToggleBtn.style.pointerEvents = 'auto';
+        }
         
         const leftLauncher = document.getElementById('launcher-left');
         const rightLauncher = document.getElementById('launcher-right');
@@ -196,17 +203,21 @@ window.addEventListener('resize', () => {
     }
 });
 
-// 🐕 SPAM ENGELLEMELİ PIBBLLE MOTORU (ID'si HTML ile tam eşitlendi!)
+// 🎯 JAVASCRIPT DOSYANIN EN ALTINDAKİ PIBBLLE MOTORUNU DA BUNUNLA DEĞİŞTİR:
+// (Müzik durdurma ve başlatma sistemi entegre edildi)
 const pibbleImg = document.getElementById("pibbleImg");
 const osurukSes = document.getElementById("osurukSes"); 
 let isOsuruyor = false; 
 
-if (pibbleImg && osurukSes) {
+if (pibbleImg && osurukSes && bgMusic) {
     pibbleImg.addEventListener("click", function() {
         if (isOsuruyor) return; 
         
         isOsuruyor = true;
         pibbleImg.classList.add("pibble-crazy-mode");
+        
+        // 1. ZEKİ HAMLE: Arkadaki ana müziği hemen duraklatıyoruz amınake
+        bgMusic.pause();
         
         pibbleImg.play()
             .then(() => {
@@ -214,14 +225,21 @@ if (pibbleImg && osurukSes) {
             })
             .catch(e => console.log("Video oynatılamadı:", e));
         
+        // Senin belirlediğin o gecikme saniyesinde osuruk sesi patlıyor
         setTimeout(function() {
             osurukSes.currentTime = 0;
             osurukSes.play().catch(e => console.log("Ses oynatılamadı:", e));
-        }, 700);
+        }, 550); // Eğer gecikme hâlâ varsa burayı 700-800 yapabilirsin pampa
 
+        // 2. ZEKİ HAMLE: Osuruk sesi tamamen bittiğinde ana müziği kaldığı yerden başlatıyoruz
         osurukSes.onended = function() {
             pibbleImg.classList.remove("pibble-crazy-mode");
             isOsuruyor = false;
+            
+            // Eğer kullanıcı ana sayfada müziği kendi eliyle "Muted (Sessiz)" yapmadıysa müziği geri başlat
+            if (!bgMusic.muted) {
+                bgMusic.play().catch(e => console.log("Müzik devam ettirilemedi:", e));
+            }
         };
     });
 }
