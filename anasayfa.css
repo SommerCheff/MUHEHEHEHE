@@ -10,47 +10,50 @@ body {
 /* Performans canavarı katman */
 body::before {
     content: "";
-    position: fixed; /* Sayfa kaysa da sabit kalır, performansı arttırır */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; min-height: 100vh;
-    /* GPU dostu gradient */
     background: linear-gradient(180deg, #070102 0%, #240101 80%, #3a0101 100%);
     z-index: -1;
-    /* Sadece opacity (saydamlık) değiştiği için GPU kullanılır */
     animation: smoothBreath 8s ease-in-out infinite alternate;
-    will-change: opacity; /* Tarayıcıya önceden haber veriyoruz */
+    will-change: opacity;
 }
 
 @keyframes smoothBreath {
-    0% { opacity: 0.2; } /* Renkler daha sönük, siyah baskın */
-    100% { opacity: 1; }  /* Renkler daha canlı */
+    0% { opacity: 0.2; }
+    100% { opacity: 1; }
 }
 
+/* TAM HAYALİNDEKİ O GENİŞ VE BÜYÜK KIRMIZI PANO */
 #about_me {
     color: #F5EDED;
     background-color: #D72323;
     border: solid 6px #1b1616;
-    height: 1500px;
-    width: 750px;
-    margin-top: 50px;
-    padding: 10px;
-    margin-bottom: 100px;
+    /* Sabit devasa yükseklik yerine esnek yükseklik verdik, içine çok şey ekleyeceksen bu şart bradar */
+    width: 1000px; 
+    height: auto;
+    min-height: 850px; 
+    margin-top: 40px;
+    padding: 30px; /* İçerideki elementler rahat nefes alsın diye padding'i arttırdım */
+    margin-bottom: 60px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7); /* Panoya derinlik katması için şık bir gölge */
+    box-sizing: border-box;
 }
 
 input[type="range"] {
-    -webkit-appearance: none; /* Chrome, Safari, Opera */
+    -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    background: transparent; /* Arka planı temizle */
+    background: transparent;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
     height: 10px;
     border: solid 2px #3E3636;
-    background: #F5EDED; /* Çubuğun rengi */
+    background: #F5EDED;
     border-radius: 2px;
 }
 
@@ -60,17 +63,17 @@ input[type="range"]::-webkit-slider-thumb {
     width: 17px;
     border: solid 3px #3E3636;
     border-radius: 50%;
-    background: #F5EDED; /* Pembe kedi patisi rengi gibi! */
+    background: #F5EDED;
     cursor: pointer;
-    margin-top: -5px; /* Çubuğa ortalamak için (Yükseklik/2 farkı) */
+    margin-top: -5px;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .resimkedi {
-    width: 180px; /* Genişliği sabitle */
-    height: 180px; /* Yüksekliği sabitle */
+    width: 180px;
+    height: 180px;
     cursor: pointer;
-    object-fit: cover; /* Resim yamulmadan kutuyu doldurur */
+    object-fit: cover;
     transition: 0.3s;
     opacity: 0.6;
 }
@@ -83,11 +86,11 @@ input[type="range"]::-webkit-slider-thumb {
     width: 100%;
     height: 100%;
     background-color: #000000;
-    z-index: 9999; /* Her şeyin en üstünde dursun */
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.8s ease-out, visibility 0.8s; /* Akıcı yok olma efekti */
+    transition: opacity 0.8s ease-out, visibility 0.8s;
 }
 
 #curtain-content {
@@ -96,9 +99,9 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 #click-image {
-    width: 150px; /* Resmin boyutunu buradan ayarlarsın pampa */
+    width: 150px;
     height: auto;
-    animation: pulse 1.5s infinite; /* Hafif büyüme küçülme efekti */
+    animation: pulse 1.5s infinite;
 }
 
 #click-text {
@@ -128,8 +131,8 @@ input[type="range"]::-webkit-slider-thumb {
 /* Köşelerdeki Sabit Fırlatıcı Emojiler */
 .emoji-launcher {
     position: fixed;
-    bottom: 20px;
-    font-size: 50px;
+    bottom: 25px;
+    font-size: 60px; /* Emojileri de panoya uyumlu olarak biraz büyüterek 60px yaptım pampa */
     z-index: 9999;
     pointer-events: none;
     user-select: none;
@@ -138,33 +141,32 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 #launcher-left {
-    left: 25px;
+    left: 30px;
 }
 
 #launcher-right {
-    right: 25px;
+    right: 30px;
     transform: scaleX(-1); 
 }
 
 /* ==========================================================================
-   🚨 MOBİL CİHAZLAR İÇİN JİLET GİBİ DUYARLILIK AYARI (MEDIA QUERY) 🚨
+   🚨 YENİLENMİŞ DUYARLI MOBİL VE TABLET AYARLARI 🚨
    ========================================================================== */
-@media screen and (max-width: 768px) {
-    /* 1. Kırmızı kutuyu telefon ekranına tam oturtuyoruz, sıkışma bitecek */
+@media screen and (max-width: 1040px) {
+    /* Bilgisayar ekranı küçüldüğünde veya tablet/telefon modunda kırmızı kutu taşmasın */
     #about_me {
-        width: 85% !important; /* Ekranın %85'ini kaplasın, sağdan soldan tatlı bir boşluk kalsın */
-        height: auto !important; /* Mobilde içeriğe göre uzasın, hantal sabit boyuttan kurtulsun */
-        min-height: 500px !important;
-        margin-top: 30px !important;
-        margin-bottom: 50px !important;
-        border-width: 4px !important; /* Mobilde çerçeve biraz daha kibar dursun */
+        width: 90% !important; /* Ekranın %90'ını kaplasın, %10'luk şık siyah arka plan hep görünsün */
+        margin-top: 25px !important;
+        margin-bottom: 40px !important;
+        padding: 20px !important;
     }
+}
 
-    /* 2. Köşelerdeki fırlatıcı emojileri mobilde biraz küçültüyoruz ki göz tırmalamasın */
+@media screen and (max-width: 768px) {
     .emoji-launcher {
-        font-size: 35px !important;
+        font-size: 42px !important;
         bottom: 15px !important;
     }
-    #launcher-left { left: 10px !important; }
-    #launcher-right { right: 10px !important; }
+    #launcher-left { left: 15px !important; }
+    #launcher-right { right: 15px !important; }
 }

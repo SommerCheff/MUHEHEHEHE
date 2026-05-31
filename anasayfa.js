@@ -35,37 +35,36 @@ function startConfetti() {
     let confeties = [];
     const colors = ["#D72323", "#F5EDED", "#333333", "#F4CE14", "#3A98B9"];
 
-    // AKILLI MOBİL KONTROLÜ: Cihaz telefon mu yoksa bilgisayar mı?
+    // Cihaz mobil mi?
     const isMobile = window.innerWidth <= 768;
 
     function fire(x, angle) {
-        // ÇAKALLIK: Mobilde yoğunluk azalsın (100 tane), PC'de o çılgın 250 adet fırlasın
-        const particleCount = isMobile ? 100 : 250;
+        // İSTEĞİN: Konfeti miktarını arttırdık! PC'de 350, mobilde 180 adet canavar fırlayacak
+        const particleCount = isMobile ? 180 : 350;
 
         for (let i = 0; i < particleCount; i++) {
             confeties.push({
                 x: x,
-                y: canvas.height - 30, 
-                angle: angle + (Math.random() * 1.4 - 0.7), 
-                // Mobilde fırlama hızını kıstık ki dar ekranda mermi gibi gitmesinler
-                speed: isMobile ? (Math.random() * 14 + 6) : (Math.random() * 24 + 8),              
-                // Mobilde kağıt parçalarını ufaltarak o kaba görüntüyü yok ettik
-                radius: isMobile ? (Math.random() * 2.5 + 2.5) : (Math.random() * 4 + 4),              
+                y: canvas.height - 35, 
+                angle: angle + (Math.random() * 1.4 - 0.7), // O efsane çılgın saçılma açısı
+                speed: isMobile ? (Math.random() * 16 + 6) : (Math.random() * 26 + 9),              
+                // İSTEĞİN: Konfeti kağıtlarının boyutunu (radius) gözle görülür şekilde büyüttük!
+                radius: isMobile ? (Math.random() * 3.5 + 3.5) : (Math.random() * 6 + 5),              
                 color: colors[Math.floor(Math.random() * colors.length)],
                 opacity: 1,
-                gravity: isMobile ? 0.2 : 0.25, // Mobilde daha hafif süzülsünler
+                gravity: isMobile ? 0.22 : 0.26, 
                 drag: 0.95
             });
         }
     }
 
-    // Sol ve Sağ köşelerden tam o çizdiğin fırlatıcılardan ateşle
+    // Sol ve Sağ köşelerdeki 🎉 emojilerinin tam göbeğinden ateşle
     if (isMobile) {
-        fire(25, -Math.PI / 4);
-        fire(canvas.width - 25, -3 * Math.PI / 4);
+        fire(30, -Math.PI / 4);
+        fire(canvas.width - 30, -3 * Math.PI / 4);
     } else {
-        fire(40, -Math.PI / 4);
-        fire(canvas.width - 40, -3 * Math.PI / 4);
+        fire(50, -Math.PI / 4);
+        fire(canvas.width - 50, -3 * Math.PI / 4);
     }
 
     const leftLauncher = document.getElementById('launcher-left');
@@ -82,7 +81,7 @@ function startConfetti() {
             
             p.speed *= p.drag;       
             p.y += p.gravity;         
-            p.opacity -= 0.006; 
+            p.opacity -= 0.005; // Havada süzülme süresini bir tık uzattım, şov sürsün diye
 
             currentOpacity = p.opacity;
 
