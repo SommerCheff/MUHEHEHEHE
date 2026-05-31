@@ -98,10 +98,10 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
 }
 
+
 #click-image {
-    width: 150px;
-    height: auto;
-    animation: pulse 1.5s infinite;
+    width: 150px !important; 
+    height: auto !important;
 }
 
 #click-text {
@@ -169,4 +169,67 @@ input[type="range"]::-webkit-slider-thumb {
     }
     #launcher-left { left: 15px !important; }
     #launcher-right { right: 15px !important; }
+}
+
+
+/* SİYAH PERDE RESİM BOYUTU (Bunu böyle sade ve net yazıyoruz, büyüme küçülme yok) */
+#click-image {
+    width: 150px !important; 
+    height: auto !important;
+}
+
+/* ==========================================================================
+   🌋 DEPREM / TİTREME ANİMASYONLARI (Kusursuz Hali)
+   ========================================================================== */
+@keyframes shake-light {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes shake-medium {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-5px, 3px); }
+    30% { transform: translate(4px, -4px); }
+    50% { transform: translate(-6px, 2px); }
+    70% { transform: translate(5px, 5px); }
+    90% { transform: translate(-2px, -3px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes shake-heavy {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-12px, 8px) rotate(-1deg); }
+    20% { transform: translate(10px, -10px) rotate(1deg); }
+    30% { transform: translate(-14px, 4px) rotate(-2deg); }
+    40% { transform: translate(12px, 12px) rotate(0deg); }
+    50% { transform: translate(-10px, -12px) rotate(2deg); }
+    60% { transform: translate(14px, -6px) rotate(-1deg); }
+    70% { transform: translate(-12px, 10px) rotate(1deg); }
+    80% { transform: translate(8px, -12px) rotate(-2deg); }
+    90% { transform: translate(-6px, 14px) rotate(0deg); }
+    100% { transform: translate(0, 0); }
+}
+
+.shake-1 { animation: shake-light 0.15s infinite; }
+.shake-2 { animation: shake-medium 0.1s infinite; }
+.shake-3 { animation: shake-heavy 0.08s infinite; }
+
+
+/* 5. Aşamada Yoktan Var Olma Efekti (Buraya !important çaktık ki kesin çalışsın) */
+.fade-in-effect {
+    opacity: 0;
+    animation: fadeInAnimation 2.5s forwards !important;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1; /* Resmi ve yazıyı görünür kılan asıl sihir burası pampa */
+    }
 }

@@ -1,30 +1,72 @@
+let clickCount = 0;
+
 document.getElementById('curtain-content').addEventListener('click', function() {
-    // 1. Siyah Perdeyi Akıcı Şekilde Kaldır
-    const curtain = document.getElementById('black-curtain');
-    curtain.style.opacity = '0';
-    curtain.style.visibility = 'hidden';
+    clickCount++; // Sayacı arttır
 
-    // 2. Ana İçeriği Göster
-    document.getElementById('main-content').style.display = 'block';
+    const kediFoto = document.getElementById('click-image');
+    const altyazi = document.getElementById('click-text');
 
-    // 3. Müziği Başlat
-    const music = document.getElementById('bg-music');
-    music.play().catch(error => console.log("Müzik engellendi:", error));
+    if (clickCount === 1) {
+        // 1. TIKLAMA: Hafif titreme
+        kediFoto.className = "shake-1"; 
+        altyazi.innerText = "MUEHEHEHE! Cihazını Ele GEÇİRİYORUZ!!\nYardimci Olmak için FOTOĞRAFA TIKLA!!!";
+    } 
+    else if (clickCount === 2) {
+        // 2. TIKLAMA: Orta deprem
+        kediFoto.className = "shake-2"; 
+        altyazi.innerText = "DAHA SERT BAS İNSAN!!!!";
+    } 
+    else if (clickCount === 3) {
+        // 3. TIKLAMA: Kıyamet depremi
+        kediFoto.className = "shake-3"; 
+        altyazi.innerText = "DAHA SERT DEDİM İKİ AYAK UZERİNDE DURAN SAPSAL!!!";
+    } 
+    else if (clickCount === 4) {
+        // 4. TIKLAMA: Komik fotoğraf gelir, sallanma hafifler
+        kediFoto.className = "shake-1"; 
+        kediFoto.src = "yesiluzayli.gif"; // Komik fotoğrafının adı
+        altyazi.innerText = "HAYİR GEÇ BUNU ÇABUK BAS!!!\nBU SON ŞANSIN İNSAN KILIĞINDAKİ ŞEY!!!";
+    } 
+    else if (clickCount === 5) {
+        // 5. TIKLAMA: KRİTİK NOKTA! Titreme biter, her şey sıfırlanır ve yavaşça yeni foto/yazı gelir
+        kediFoto.className = ""; // Titreşim sınıflarını tamamen sildik
+        kediFoto.src = "papa.PNG"; // Son asil fotoğrafının adı
+        
+        // Yazının 4. etapta kalmaması için burada net olarak yeni metni atıyoruz!
+        altyazi.innerText = "Sanirim artık bir anlamı kalmadı... İyice rezil olduk...\nAma 1 kez daha tıklamaktan zarar gelmez!! Sadece 1 kezcik daha tıkla insan kılıklı şey!!";
 
-    // 4. Sabit Emojileri Görünür Yap ve Konfeti Yağmurunu Başlat
-    const leftLauncher = document.getElementById('launcher-left');
-    const rightLauncher = document.getElementById('launcher-right');
-    
-    if (leftLauncher && rightLauncher) {
-        leftLauncher.style.display = 'block';
-        leftLauncher.style.opacity = '1';
-        rightLauncher.style.display = 'block';
-        rightLauncher.style.opacity = '1';
+        // Eski sınıfları tamamen kazıyalım
+        kediFoto.classList.remove("fade-in-effect", "shake-1", "shake-2", "shake-3");
+        altyazi.classList.remove("fade-in-effect");
+
+        // Tarayıcının animasyonu tetiklemesi için görünümü anlık sıfırlıyoruz (Bilişimci hilesi)
+        void kediFoto.offsetWidth;
+        void altyazi.offsetWidth;
+
+        // Şimdi ikisine de aynı anda yoktan var olma efektini enjekte ediyoruz
+        kediFoto.classList.add("fade-in-effect");
+        altyazi.classList.add("fade-in-effect");
+    } 
+    else if (clickCount === 6) {
+        // 6. TIKLAMA: MUTLU SON! Perde kalkar, şov başlar
+        const curtain = document.getElementById('black-curtain');
+        curtain.style.opacity = '0';
+        curtain.style.visibility = 'hidden';
+
+        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('launcher-left').style.display = 'block';
+        document.getElementById('launcher-right').style.display = 'block';
+
+        const music = document.getElementById('bg-music');
+        music.play().catch(error => console.log("Müzik engellendi:", error));
+
+        startConfetti();
     }
-
-    startConfetti();
 });
 
+// startConfetti() fonksiyonun alt tarafta aynen durmaya devam etsin pampa, ona dokunma...
+
+// EL YAPIMI O ESKİ CANAVAR KONFETİ MOTORU (Buna dokunmuyoruz pampa, aynen kalıyor)
 function startConfetti() {
     const canvas = document.getElementById("confetti-canvas");
     const ctx = canvas.getContext("2d");
@@ -34,21 +76,16 @@ function startConfetti() {
 
     let confeties = [];
     const colors = ["#D72323", "#F5EDED", "#333333", "#F4CE14", "#3A98B9"];
-
-    // Cihaz mobil mi?
     const isMobile = window.innerWidth <= 768;
 
     function fire(x, angle) {
-        // İSTEĞİN: Konfeti miktarını arttırdık! PC'de 350, mobilde 180 adet canavar fırlayacak
         const particleCount = isMobile ? 180 : 350;
-
         for (let i = 0; i < particleCount; i++) {
             confeties.push({
                 x: x,
                 y: canvas.height - 35, 
-                angle: angle + (Math.random() * 1.4 - 0.7), // O efsane çılgın saçılma açısı
+                angle: angle + (Math.random() * 1.4 - 0.7), 
                 speed: isMobile ? (Math.random() * 16 + 6) : (Math.random() * 26 + 9),              
-                // İSTEĞİN: Konfeti kağıtlarının boyutunu (radius) gözle görülür şekilde büyüttük!
                 radius: isMobile ? (Math.random() * 3.5 + 3.5) : (Math.random() * 6 + 5),              
                 color: colors[Math.floor(Math.random() * colors.length)],
                 opacity: 1,
@@ -58,7 +95,6 @@ function startConfetti() {
         }
     }
 
-    // Sol ve Sağ köşelerdeki 🎉 emojilerinin tam göbeğinden ateşle
     if (isMobile) {
         fire(30, -Math.PI / 4);
         fire(canvas.width - 30, -3 * Math.PI / 4);
@@ -72,17 +108,14 @@ function startConfetti() {
 
     function update() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         let currentOpacity = 0;
 
         confeties.forEach((p, index) => {
             p.x += Math.cos(p.angle) * p.speed;
             p.y += Math.sin(p.angle) * p.speed;
-            
             p.speed *= p.drag;       
             p.y += p.gravity;         
-            p.opacity -= 0.005; // Havada süzülme süresini bir tık uzattım, şov sürsün diye
-
+            p.opacity -= 0.005; 
             currentOpacity = p.opacity;
 
             ctx.beginPath();
