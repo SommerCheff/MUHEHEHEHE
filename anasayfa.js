@@ -21,30 +21,51 @@ document.getElementById('curtain-content').addEventListener('click', function() 
     if (clickCount === 1) {
         // 1. TIKLAMA: Hafif titreme
         kediFoto.className = "shake-1"; 
-        altyazi.innerText = "MUEHEHEHE! Cihazını Ele GEÇİRİYORUZ!!\nYardimci Olmak için FOTOĞRAFA TIKLA!!!";
+         kediFoto.src = "konusankedy.gif";
+        altyazi.innerText = "MUEHEHEHE! SENİ KANDIRDIK ESLEM!! BİİZ PİTOPATİPİ UZAYLILARIYIZ!! Cihazını Ele GEÇİRİYORUZ!!\nİş birliği yapmazsan kötü seyler olur. FOTOĞRAFA TIKLAMANI EMREDİYORUZ!!!";
     } 
     else if (clickCount === 2) {
         // 2. TIKLAMA: Orta deprem
         kediFoto.className = "shake-2"; 
+         kediFoto.src = "konusankedy.gif";
         altyazi.innerText = "DAHA SERT BAS İNSAN!!!!";
     } 
     else if (clickCount === 3) {
         // 3. TIKLAMA: Kıyamet depremi
         kediFoto.className = "shake-3"; 
-        altyazi.innerText = "DAHA SERT DEDİM İKİ AYAK UZERİNDE DURAN SAPSAL!!!";
+         kediFoto.src = "konusankedy.gif";
+        altyazi.innerText = "DAHA SERT DEDİM SAPSAL!!!";
     } 
     else if (clickCount === 4) {
         // 4. TIKLAMA: Komik fotoğraf gelir, sallanma hafifler
-        kediFoto.className = "shake-1"; 
-        kediFoto.src = "yesiluzayli.gif"; 
-        altyazi.innerText = "HAYİR GEÇ BUNU ÇABUK BAS!!!\nBU SON ŞANSIN İNSAN KILIĞINDAKİ ŞEY!!!";
+        kediFoto.className = "shake-2"; 
+        kediFoto.src = "kebab.jpg"; 
+        altyazi.innerText = "BU NASIL GELD- ...........";
     } 
-    else if (clickCount === 5) {
+      else if (clickCount === 5) {
+        // 4. TIKLAMA: Komik fotoğraf gelir, sallanma hafifler
+        kediFoto.className = ""; 
+        kediFoto.src = "kebab.jpg"; 
+        altyazi.innerText = "Oh- .......";
+    } 
+      else if (clickCount === 6) {
+        // 4. TIKLAMA: Komik fotoğraf gelir, sallanma hafifler
+        kediFoto.className = ""; 
+        kediFoto.src = "ıslak.jpg"; 
+        altyazi.innerText = "....";   
+    } 
+     else if (clickCount === 7) {
+        // 4. TIKLAMA: Komik fotoğraf gelir, sallanma hafifler
+        kediFoto.className = ""; 
+        kediFoto.src = "uykulu.jpg"; 
+        altyazi.innerText = "...";   
+    } 
+    else if (clickCount === 8) {
         // 5. TIKLAMA: KRİTİK NOKTA! Titreme biter, yavaşça yeni foto/yazı gelir
         kediFoto.className = ""; 
         kediFoto.src = "papa.png"; 
         
-        altyazi.innerText = "Sanirim artık bir anlamı kalmadı... İyice rezil olduk...\nAma 1 kez daha tıklamaktan zarar gelmez!! Sadece 1 kezcik daha tıkla insan kılıklı şey!!";
+        altyazi.innerText = "... Bütün bir yolcuğumun böyle utanç duruma düşmem için miydi? Onurum kırıldı. \n Tıklayıp tıklamaman artık umrumda değil. İstersen tıkla sen bilirsin...";
 
         kediFoto.classList.remove("fade-in-effect", "shake-1", "shake-2", "shake-3");
         altyazi.classList.remove("fade-in-effect");
@@ -55,7 +76,7 @@ document.getElementById('curtain-content').addEventListener('click', function() 
         kediFoto.classList.add("fade-in-effect");
         altyazi.classList.add("fade-in-effect");
     } 
-    else if (clickCount === 6) {
+    else if (clickCount === 9) {
         // 6. TIKLAMA: MUTLU SON! Perde kalkar, şov başlar
         const curtain = document.getElementById('black-curtain');
         curtain.style.opacity = '0';

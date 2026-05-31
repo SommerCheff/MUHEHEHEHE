@@ -1,31 +1,84 @@
+/* 🔤 YEREL EL YAZISI FONT MOTORU ENJEKSİYONU */
+@font-face {
+    font-family: 'MyHandsHold'; /* CSS içinde çağırırken kullanacağımız takma isim */
+    src: url('MyHandsareHoldingYou.ttf') format('truetype'); /* Klasördeki dosyanın adı */
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #070102; /* Ana siyah rengin sabit */
+    background-color: #020205; /* Derin uzay siyahı */
     overflow-x: hidden;
+    position: relative;
 }
 
-/* Performans canavarı katman */
+/* ==========================================================================
+   🌌 DEVASA GALAKSİ MOTORU (HATALARI SİLİNMİŞ KUSURSUZ VERSİYON)
+   ========================================================================== */
+
+/* 1. KATMAN: Çok Küçük ve Sık Yıldızlar */
 body::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%; min-height: 100vh;
-    background: linear-gradient(180deg, #070102 0%, #240101 80%, #3a0101 100%);
+    width: 2px;
+    height: 2px;
+    z-index: -2;
+    background: transparent;
+    box-shadow: 
+        15vw 10vh #fff, 25vw 45vh #fff, 40vw 15vh #fff, 55vw 70vh #fff, 70vw 30vh #fff, 85vw 80vh #fff,
+        5vw 85vh #fff, 95vw 20vh #fff, 33vw 60vh #fff, 62vw 88vh #fff, 80vw 55vh #fff, 12vw 40vh #fff,
+        50vw 50vh #fff, 75vw 15vh #fff, 22vw 92vh #fff, 88vw 5vh #fff, 45vw 78vh #fff, 68vw 65vh #fff,
+        90vw 40vh #fff, 30vw 25vh #fff, 10vw 70vh #fff, 60vw 5vh #fff, 82vw 73vh #fff, 38vw 35vh #fff,
+        3vw 12vh #fff, 18vw 55vh #fff, 28vw 8vh #fff, 48vw 63vh #fff, 58vw 22vh #fff, 73vw 85vh #fff,
+        93vw 66vh #fff, 35vw 95vh #fff, 65vw 40vh #fff, 78vw 5vh #fff, 87vw 52vh #fff, 14vw 77vh #fff;
+    opacity: 0.9;
+}
+
+/* 2. KATMAN: Biraz Daha Büyük Parlak Yıldızlar */
+.galaxy-stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 3px;
+    z-index: -2;
+    background: transparent;
+    pointer-events: none;
+    box-shadow: 
+        8vw 20vh #fff, 22vw 60vh #fff, 47vw 5vh #fff, 51vw 80vh #fff, 66vw 15vh #fff, 81vw 90vh #fff,
+        10vw 90vh #fff, 92vw 35vh #fff, 36vw 75vh #fff, 59vw 92vh #fff, 89vw 15vh #fff, 2vw 45vh #fff,
+        42vw 52vh #fff, 71vw 28vh #fff, 19vw 88vh #fff, 86vw 60vh #fff, 61vw 10vh #fff, 74vw 70vh #fff;
+    opacity: 0.75;
+}
+
+/* 🎇 3. KATMAN: YEŞİL KUZEY IŞIKLARI (AURORA EFEKTİ) */
+body::after {
+    content: "";
+    position: fixed;
+    top: -40%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
     z-index: -1;
-    animation: smoothBreath 8s ease-in-out infinite alternate;
-    will-change: opacity;
+    background: radial-gradient(circle at 35% 35%, rgba(0, 255, 136, 0.28) 0%, transparent 55%),
+                radial-gradient(circle at 65% 55%, rgba(0, 200, 255, 0.18) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(10, 255, 100, 0.12) 0%, transparent 65%);
+    filter: blur(50px);
+    animation: auroraDance 10s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 
-@keyframes smoothBreath {
-    0% { opacity: 0.2; }
-    100% { opacity: 1; }
+@keyframes auroraDance {
+    0% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+    50% { transform: rotate(4deg) scale(1.12); opacity: 1; }
+    100% { transform: rotate(-3deg) scale(0.95); opacity: 0.75; }
 }
-
 /* TAM HAYALİNDEKİ O GENİŞ VE BÜYÜK KIRMIZI PANO */
 #about_me {
     color: #F5EDED;
@@ -155,10 +208,11 @@ input[type="range"]::-webkit-slider-thumb {
 @media screen and (max-width: 1040px) {
     /* Bilgisayar ekranı küçüldüğünde veya tablet/telefon modunda kırmızı kutu taşmasın */
     #about_me {
-        width: 90% !important; /* Ekranın %90'ını kaplasın, %10'luk şık siyah arka plan hep görünsün */
+        width: 95% !important; /* Ekranın %90'ını kaplasın, %10'luk şık siyah arka plan hep görünsün */
         margin-top: 25px !important;
         margin-bottom: 40px !important;
-        padding: 20px !important;
+        padding: 35px 25px !important;
+        box-sizing: border-box;
     }
 }
 
@@ -231,5 +285,55 @@ input[type="range"]::-webkit-slider-thumb {
     }
     to {
         opacity: 1; /* Resmi ve yazıyı görünür kılan asıl sihir burası pampa */
+    }
+}
+
+
+/* ==========================================================================
+   👑 DOĞUM GÜNÜ BAŞLIK STİLİ (FİYAKALI VE PARLAK)
+   ========================================================================== */
+.birthday-title {
+    font-family: 'Poppins', 'Montserrat', sans-serif; /* Eğer bu fontlar yüklüyse çok klas durur */
+    font-size: 2.8rem; /* Mobilde ve PC'de heybetli durması için ideal boyut */
+    font-weight: 900; /* Kalın, okkalı bir duruş */
+    color: #F5EDED; /* Senin o çok sevdiğin kemik beyazı/açık renk */
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 35px; /* Altındaki içeriklerle arasında ferah bir boşluk bıraktık */
+    text-transform: uppercase; /* Tüm harfleri otomatik büyük yapar */
+    letter-spacing: 2px; /* Harflerin arası biraz açık olsun, premium dursun */
+    
+    /* Hafif parıltı efekti: Kırmızı panonun üstünde harika patlayacak */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 
+                 3px 3px 0px #1b1616; /* Arkasına sert siyah bir gölge atarak jilet gibi keskinleştirdik */
+}
+
+/* ==========================================================================
+   👑 DOĞUM GÜNÜ BAŞLIĞI (KESKİNLİKLER VE GÖLGELER UÇURULDU)
+   ========================================================================== */
+.birthday-title {
+    font-family: 'MyHandsHold', cursive !important;
+    font-size: 3.8rem; /* Boyutu el yazısına göre gayet ideal */
+    font-weight: normal !important; /* Kalınlaştırma kesinlikle yok, font incecik kalacak */
+    color: #F5EDED; /* Senin o kemik beyazı rengin */
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 35px;
+    letter-spacing: 0px; /* Harfler el yazısı gibi doğal mesafede dursun */
+
+    /* 🎯 İŞTE O KESKİNLİĞİ VE BEYAZ PARLAMAYI BİTİREN SİHİRLİ SATIR: */
+    text-shadow: none !important; /* Etrafındaki o yapay, keskin siyahlığı ve parıltıyı tamamen sildik amınake! */
+    
+    /* Yazının tarayıcıda daha pürüzsüz ve yumuşak görünmesi için bilişimci hilesi */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Telefonlar için boyut ayarı */
+@media screen and (max-width: 768px) {
+    .birthday-title {
+        font-size: 2.4rem;
+        margin-bottom: 25px;
+        text-shadow: none !important; /* Mobilde de gölgesiz, dümdüz ve doğal */
     }
 }
